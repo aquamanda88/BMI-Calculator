@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI 計算機</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.css">
+</head>
+<body>
+    <nav class="d-flex align-items-center">
+        <h1 class="logoImg mr-2">
+            <a href="#">Logo</a>
+        </h1>
+        <h2>BMI 體脂計算機</h2>
+    </nav>
+    <div class="banner container-fluid px-0">
+    </div>
+    <div class="descriptionArea">
+        <div class="container">
+            <h3 class="contentTitle">BMI 的計算方法</h3>
+            <ul class="textList row flex-wrap">
+                <li class="col-12 col-md-6">
+                    <h4>Introduction</h4>
+                    <p>
+                        體脂肪率，又稱體脂百分比、體脂率，是將脂肪含量用其占總體重的百分比的形式表示，一般用於動物，但近年開始有在人體的應用。對於動物來說，體脂百分比的計算法是把動物體重中的脂肪部分重量與整個身體的分量相除，再乘以100%。
+                    </p>
+                    <p>
+                        對於男性，必需脂肪一般佔體重的2～5%，而女性約為10～13%。儲存脂肪由脂肪組織內所累積的脂肪組成，當中部份位於胸腔及腹部，用以保護身體的內臟。一般來說，最小的建議總體脂百分比都會比身體的必需脂肪比例高。直接測量體脂百分比具有一定的難度，所以現時網上一般的方法，都是透過對人的性別及體重資料作出評估。
+                    </p>
+                </li>
+                <li class="col-12 col-md-6">
+                    <h4>Standard</h4>
+                    <p>
+                        雖然要直接測量體脂百分比具有一定的難度，但也不是完全沒有辦法的。其中最為精確但較為昂貴的方法是測量患者在水下的體重，即靜水體重。其他較為簡單但精確度稍差的方法是，測量皮褶厚度，也即測定特定部位皮下脂肪的厚度。另一個方法是測量生物電阻，但該方法由於多數家用儀器僅僅測量雙腳間的生物電阻且精度不同，所以並不被一些機構推薦為替代 BMI 的方法。
+                    </p>
+                </li>
+                <li class="col-12 col-md-6">
+                    <h4>Reduce Bodyfat</h4>
+                    <h5>降低體脂肪比率方法：</h5>
+                    <ul>
+                        <li>透過有氧運動減少脂肪。</li>
+                        <li>透過重量訓練增加肌肉量，充足的肌肉所燃燒的脂肪比長時間有氧運動更強大。</li>
+                        <li>減少攝入熱量，自然消耗體脂肪方法，一般是節食，節食方法需要堅持較長時間，對身體和意志力都是考驗。</li>
+                    </ul>
+                </li>
+                <li class="col-12 col-md-6">
+                    <h4>Formula</h4>
+                    <p>體脂 (%) = ( 1.2 x BMI ) + ( 0.23 x 年齡 - 5.4 ) - ( 10.8 x 性別 )</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <main class="calculation container d-flex flex-column align-items-center">
+        <form class="row" id="appendant_form">
+            <div class="form-group">
+                <label for="appendantHeight">身高 Height (公分 cm)</label>
+                <input type="number" class="form-control" id="appendantHeight" placeholder="請輸入身高">
+                <div class="help-block with-errors"> </div>
+            </div>
+            <div class="form-group">
+                <label for="appendantWeight">體重 Weight (公斤 kg)</label>
+                <input type="number" class="form-control" id="appendantWeight" placeholder="請輸入體重">
+            </div>
+            <div class="form-group">
+                <label for="appendantAge">年齡 Age</label>
+                <input type="number" class="form-control" id="appendantAge" placeholder="請輸入年齡">
+            </div>
+            <div class="form-group">
+                <label for="appendantSex">生理性別 Sex</label>
+                <select id="appendantSex" class="form-control">
+                    <option selected>請選擇性別</option>
+                    <option value="0">生理女性 Female</option>
+                    <option value="1">生理男性 Male</option>
+                </select>
+            </div>
+        </form>
+        <div class="result">
+            <section class="result d-flex flex-column align-items-center">
+                <h2 class="resultText">你的 BMI 值是</h2>             
+                <h4 id="bmiText"></h4>
+                <h3 id="resultText">0</h3> 
+                <h2 class="BFresultText">你的 BMI 體脂率是</h2>
+                <h3 id="BFresultText">0</h3>           
+            </section>
+            <ul class="d-flex justify-content-between p-0">
+                <li>
+                    <button type="button" id="addAppendant" class="btn btn-lg btn-primary">開始計算</button>
+                </li>
+                <li>
+                    <button type="button" id="clearAppendant" class="btn btn-lg btn-primary">清空結果</button>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <!-- Add jQuery -->
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/script.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
